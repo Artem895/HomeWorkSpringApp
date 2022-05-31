@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>FileLoader</title>
+</head>
+<body>
+<form action="#" th:action="@{/fileloader}"   enctype="multipart/form-data" method="post">
+    <label for="file">Загрузите csv файл </label>
+    <input name="file" type="file"  id="file"/>
+    <br>
+    <input type="submit" value="Загрузить "/>
+</form>
+<p th:if="${succesful}" >Файл успешно загружен</p>
+<p th:if="${uups}" >Вы не добавили файл </p>
+</body>
+</html>

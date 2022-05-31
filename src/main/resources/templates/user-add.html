@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/user-add}" th:object="${user}" method="POST">
+    <label for="fname">FirstName</label>
+    <input  type="text" th:field="*{fname}" id="fname"/>
+    <p th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}">Error for firstname</p>
+    <br>
+    <label for="lname">LastName</label>
+    <input  type="text" th:field="*{lname}"  id="lname"/>
+    <p th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}">Error for lastname</p>
+    <br>
+    <label for="otchestvo">Otchestvo</label>
+    <input  type="text" th:field="*{patronymic}"  id="otchestvo"/>
+    <p th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}">Error for patronymic</p>
+    <br>
+    <label for="age">Age</label>
+    <input  type="number" th:field="*{age}"  id="age"/>
+    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error for age</p>
+    <br>
+    <label for="work">Place of Work</label>
+    <input  type="text" th:field="*{workplace}"  id="work"/>
+    <p th:if="${#fields.hasErrors('workplace')}" th:errors="*{workplace}">Error for workplace</p>
+    <br>
+    <label for="mail">EMail</label>
+    <input  type="text" th:field="*{mailadress}" id="mail"/>
+    <p th:if="${#fields.hasErrors('mailadress')}" th:errors="*{mailadress}">Error for mailadress</p>
+    <br>
+    <label for="salary">Salary</label>
+    <input name="salary" type="number" step="any" th:field="*{salary}" id="salary"/>
+    <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Error for salary</p>
+    <br>
+    <input type="submit" value="Add Person"/>
+
+</form>
+</body>
+</html>

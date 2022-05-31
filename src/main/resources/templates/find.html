@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Find</h1>
+<form action="#" th:action="@{/find}"  method="GET">
+    <label for="fname">FirstName</label>
+    <input name="fname" type="text"  id="fname"/>
+    <br>
+    <label for="lname">LastName</label>
+    <input name="lname" type="text"  id="lname"/>
+    <br>
+    <input type="submit" value="Find person"/>
+</form>
+<p>Найденные личности </p>
+<div th:switch="${users}">
+    <h2 th:case="null">Никто не найден </h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>patronymic</th>
+                <th>age</th>
+                <th>mailadress</th>
+                <th>workplace</th>
+                <th>salary</th>
+                <th>User-Agent</th>
+                <th>Time of request</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.fname}"></td>
+                <td th:text="${user.lname}"></td>
+                <td th:text="${user.patronymic}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.mailadress}"></td>
+                <td th:text="${user.workplace}"></td>
+                <td th:text="${user.salary}"></td>
+                <td th:text="${useragent}"></td>
+                <td th:text="${timeuser}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/user-add">Создать </a></p>
+</div>
+<form action="#" th:action="@{/findandsend}"  method="GET">
+    <label for="id">Введите id пользователея</label>
+    <input name="id" type="number"  id="id"/>
+    <br>
+    <label for="messeg">Сообщение </label>
+    <textarea rows="10" cols="45" name="messeg" id="messeg"></textarea>
+    <br>
+    <input type="submit" value="Send Messeg"/>
+</form>
+</body>
+</html>
