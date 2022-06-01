@@ -12,6 +12,6 @@
     <input type="submit" value="Загрузить "/>
 </form>
 <p th:if="${succesful}" >Файл успешно загружен</p>
-<p th:if="${uups}" >Вы не добавили файл </p>
+<p th:if="!${succesful}" >Вы не добавили файл </p>
 </body>
 </html>

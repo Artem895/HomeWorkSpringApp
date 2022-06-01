@@ -93,7 +93,7 @@ public class UserController {
                 return "fileloader";
             } else {
                 System.out.println("нет файла  ");
-                model.addAttribute("uups", true);
+                model.addAttribute("succesful", false);
                 return "fileloader";
             }
         }catch (IOException e){

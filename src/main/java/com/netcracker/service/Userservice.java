@@ -25,20 +25,19 @@ public class Userservice {
     public Userservice(Userrepository userrepository) {
         this.userrepository = userrepository;
     }
-
     @Autowired
     MailSender mailSender;
-
     @Value("${upload.path}")
     private String uploadpath;
+
 
     public List<User> findAll(){
         return userrepository.findAll();
     }
-
     public  List<String> finAllemails(){
         return userrepository.findAllEmail();
     }
+
 
     public User saveUser(User user) throws MailAdreesAlweysExist{
         List<String> allemails=userrepository.findAllEmail();
@@ -49,6 +48,7 @@ public class Userservice {
         }
         return userrepository.save(user);
     }
+
 
     public List<User> findbynameandlastname(String name,String lastname){
         return userrepository.findbynameadlastname(name,lastname);
