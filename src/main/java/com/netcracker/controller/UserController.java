@@ -67,13 +67,11 @@ public class UserController {
         List<User> users;
         if(fname.isPresent()&&lname.isPresent()){
             users= userservice.findbynameandlastname(fname.get(),lname.get());
-            HttpSession session = request.getSession(true);
             String useragent= request.getHeader("User-Agent");
             if(users.size()!=0){
                 model.addAttribute("useragent",useragent);
                 model.addAttribute("timeuser",userservice.data());
                 model.addAttribute("users",users);
-                return "find";
             }else return "redirect:/notvalid";
         }
         return "find";
@@ -90,11 +88,9 @@ public class UserController {
             if (!file.isEmpty()) {
                 userservice.uploadfile(file);
                 model.addAttribute("succesful", true);
-                return "fileloader";
             } else {
                 System.out.println("нет файла  ");
                 model.addAttribute("succesful", false);
-                return "fileloader";
             }
         }catch (IOException e){
             System.out.println(e.getLocalizedMessage());
